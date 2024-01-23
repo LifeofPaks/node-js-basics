@@ -1,0 +1,39 @@
+[
+    {
+        "id":1,
+        "name":"APPLE iPhone SE",
+        "color":"Black",
+        "price":"880",
+        "modelName":"iPhone SE",
+        "image":"https://cdn.alloallo.media/catalog/product/apple/iphone/iphone-se/iphone-se-black.jpg"
+
+    },
+    {
+        "id":2,
+        "name":"APPLE iPhone XR",
+        "color":"Red",
+        "price":"910",
+        "modelName":"iPhone XR",
+        "image":"https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/03/7766641/1.jpg?2229"
+
+    },
+    {
+        "id":3,
+        "name":"APPLE iPhone 11 Pro Max",
+        "color":"Gray",
+        "price":"990",
+        "modelName":"iPhone 11 Pro Max",
+        "image":"https://www.technocratng.com/wp-content/uploads/2021/01/IPHONE-11-PRO-MAX-GREY1.png"
+
+    },
+    {
+        "id":4,
+        "name":"APPLE iPhone 13 Pro Max",
+        "color":"White",
+        "price":"1100",
+        "modelName":"iPhone 13 Pro Max",
+        "image":"https://www.rewjido.com/wp-content/uploads/2021/10/13-pro-max-white.png"
+
+    }
+
+]
