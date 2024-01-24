@@ -31,11 +31,22 @@
 
 const http = require("http");
 const fs = require("fs");
-const html = fs.readFileSync("./template/index.html", "utf-8")
+const html = fs.readFileSync("./template/index.html", "utf-8");
 
 const products = JSON.parse(fs.readFileSync("./data/products.json", "utf-8"));
+const productsListHtml = fs.readFileSync(
+  "./template/product-list.html",
+  "utf-8"
+);
 
+const productHtmlArray = products.map((prod) => {
+  let output = productsListHtml.replace("{{%IMAGE%}}", prod.image);
+  output = output.replace("{{%NAME%}}", prod.name);
+  output = output.replace("{{%COLOR%}}", prod.color);
+  output = output.replace("{{%PRICE%}}", prod.price);
 
+  return output;
+});
 
 const server = http.createServer((req, res) => {
   const path = req.url;
@@ -43,29 +54,31 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, {
       "Content-Type": "text",
     });
-    res.end(html);
+    res.end(html.replace("{{%CONTENT%}}", "This is the home page"));
   } else if (path.toLocaleLowerCase() === "/about") {
     res.writeHead(200, {
       "Content-Type": "text",
     });
-    res.end("This is the about page");
+    res.end(html.replace("{{%CONTENT%}}", "This is the home about"));
   } else if (path.toLocaleLowerCase() === "/contact") {
     res.writeHead(200, {
       "Content-Type": "text",
     });
-    res.end("This is the contact page");
+    res.end(html.replace("{{%CONTENT%}}", "This is the contact page"));
   } else if (path.toLocaleLowerCase() === "/products") {
+    const productResponse = html.replace(
+      "{{%CONTENT%}}", productHtmlArray.join("")
+    );
     res.writeHead(200, {
-      "Content-Type": "application/json",
+      "Content-Type": "text",
     });
-    res.end("This is the products page")
-    console.log(products)
+    res.end(productResponse);
   } else {
     //handle a non-existing route
     res.writeHead(404, {
       "Content-Type": "text",
     });
-    res.end("Error 404: Page not found!");
+    res.end(html.replace("{{%CONTENT%}}", "Error 404: Page not found!"));
   }
 });
 

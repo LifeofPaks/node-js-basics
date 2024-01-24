@@ -5,18 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.css" />
     <title>Node JS Fundmentals</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      a {
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #333;
+        font-size: 14px;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        gap: 2rem;
+        padding-block: 1rem;
+      }
+      .content {
+        width: 100%;
+        padding-block: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    </style>
   </head>
   <body>
     <div class="page">
-
-        <nav>
-            <ul class="links">
-                <li class="link"><a href="localhost:8000/home"></a>Home</li>
-                <li class="link"><a href="localhost:8000/about"></a>About</li>
-                <li class="link"><a href="localhost:8000/contact"></a>Contact</li>
-                <li class="link"><a href="localhost:8000/products"></a>Products</li>
-            </ul>
-        </nav>
+      <nav>
+        <a href="home">Home</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a>
+        <a href="products">Products</a>
+      </nav>
+      <div class="content">
+        
+        <p>{{%CONTENT%}}</p>
+      </div>
     </div>
   </body>
 </html>

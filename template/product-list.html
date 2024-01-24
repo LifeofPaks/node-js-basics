@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product details</title>
+  </head>
+  <style>
+  
+    .product {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 430px;
+      padding: 1rem;
+    }
+    .details {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      letter-spacing: 1px;
+      font-size: 10px;
+      text-transform: uppercase;
+      width: 100px;
+      height: 25px;
+      color: white;
+      cursor: pointer;
+    }
+    .btns {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .buy {
+      background: green;
+    }
+
+    .sd {
+      background: red;
+    }
+    h3 {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 12px;
+      color: #555;
+      font-style: italic;
+    }
+
+    h4 {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+  <body>
+    <div class="product-list">
+      <div class="product">
+        <div class="details">
+          <div class="left">
+            <img src="{{%IMAGE%}}" alt="product-img" />
+          </div>
+          <div class="right">
+            <h3>{{%NAME%}}</h3>
+            <p>{{%COLOR%}}</p>
+            <h4>{{%PRICE%}}</h4>
+            <div class="btns">
+              <button class="buy">Buy Now</button>
+              <button class="sd">Show Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
