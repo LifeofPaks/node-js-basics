@@ -1,6 +1,6 @@
 [
     {
-        "id":1,
+        "id":0,
         "name":"APPLE iPhone SE",
         "color":"Black",
         "price":"880",
@@ -9,7 +9,7 @@
 
     },
     {
-        "id":2,
+        "id":1,
         "name":"APPLE iPhone XR",
         "color":"Red",
         "price":"910",
@@ -18,7 +18,7 @@
 
     },
     {
-        "id":3,
+        "id":2,
         "name":"APPLE iPhone 11 Pro Max",
         "color":"Gray",
         "price":"990",
@@ -27,7 +27,7 @@
 
     },
     {
-        "id":4,
+        "id":3,
         "name":"APPLE iPhone 13 Pro Max",
         "color":"White",
         "price":"1100",

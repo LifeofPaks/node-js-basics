@@ -18,7 +18,7 @@
       gap: 1rem;
     }
 
-    img {
+    .si {
       width: 100px;
       height: 100px;
       object-fit: cover;
@@ -46,7 +46,12 @@
     }
 
     .sd {
-      background: red;
+      background: rgb(224, 141, 40);
+      color: #fff;
+      padding: .5rem;
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     h3 {
       font-size: 14px;
@@ -70,15 +75,15 @@
       <div class="product">
         <div class="details">
           <div class="left">
-            <img src="{{%IMAGE%}}" alt="product-img" />
+            <img class="si" src="{{%IMAGE%}}" alt="product-img" />
           </div>
           <div class="right">
             <h3>{{%NAME%}}</h3>
             <p>{{%COLOR%}}</p>
-            <h4>{{%PRICE%}}</h4>
+            <h4>${{%PRICE%}}</h4>
             <div class="btns">
-              <button class="buy">Buy Now</button>
-              <button class="sd">Show Details</button>
+              <!-- <button class="sd">Show Details</button> -->
+              <a class="sd" href="/products?id={{%ID%}}">Show Details</a>
             </div>
           </div>
         </div>

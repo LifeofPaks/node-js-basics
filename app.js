@@ -29,60 +29,200 @@
 // })
 // console.log("Reading file...")
 
+
+// const fs = require("fs");
+// const replaceHtml = require("./modules/replaceHtml")
+// const html = fs.readFileSync("./template/index.html", "utf-8");
+
+// const products = JSON.parse(fs.readFileSync("./data/products.json", "utf-8"));
+// const productsListHtml = fs.readFileSync(
+//   "./template/product-list.html",
+//   "utf-8"
+// );
+
+// const productDetailsHtml = fs.readFileSync( "./template/product-details.html", "utf-8");
+
+
+// const replaceHtml = (template, product) =>{
+//   let output = template.replace("{{%IMAGE%}}", product.image);
+//   output = output.replace("{{%NAME%}}", product.name);
+//   output = output.replace("{{%COLOR%}}", product.color);
+//   output = output.replace("{{%PRICE%}}", product.price);
+//   output = output.replace("{{%ID%}}", product.id);
+
+//   return output;
+// }
+
+// const server = http.createServer((req, res) => {
+//   const url = require("url");
+//   const { query, pathname: path } = url.parse(req.url, true);
+
+//   // const path = req.url;
+//   if (path === "/" || path.toLocaleLowerCase() === "/home") {
+//     res.writeHead(200, {
+//       "Content-Type": "text",
+//     });
+//     res.end(html.replace("{{%CONTENT%}}", "This is the home page"));
+//   } else if (path.toLocaleLowerCase() === "/about") {
+//     res.writeHead(200, {
+//       "Content-Type": "text",
+//     });
+//     res.end(html.replace("{{%CONTENT%}}", "This is the home about"));
+//   } else if (path.toLocaleLowerCase() === "/contact") {
+//     res.writeHead(200, {
+//       "Content-Type": "text",
+//     });
+//     res.end(html.replace("{{%CONTENT%}}", "This is the contact page"));
+//   } 
+//   else if (path.toLocaleLowerCase() === "/products") {
+//     if(!query.id){
+//       const productHtmlArray = products.map((prod) =>{
+//        return  replaceHtml(productsListHtml, prod)
+//       })
+//       const productResponse = html.replace(
+//         "{{%CONTENT%}}",
+//         productHtmlArray.join("")
+//       );
+//       res.writeHead(200, {
+//         "Content-Type": "text",
+//       });
+//       res.end(productResponse);
+//     } else{
+//       const prod = products[query.id]
+//       const productDetailsResponseHtml = replaceHtml(productDetailsHtml, prod)
+//       res.end(html.replace(
+//         "{{%CONTENT%}}",
+//         productDetailsResponseHtml))
+//     }
+   
+//   } else {
+//     //handle a non-existing route
+//     res.writeHead(404, {
+//       "Content-Type": "text",
+//     });
+//     res.end(html.replace("{{%CONTENT%}}", "Error 404: Page not found!"));
+//   }
+// });
+
+
+
+// server.on("request", (req, res) =>{
+//   const url = require("url");
+//   const { query, pathname: path } = url.parse(req.url, true);
+
+//   // const path = req.url;
+//   if (path === "/" || path.toLocaleLowerCase() === "/home") {
+//     res.writeHead(200, {
+//       "Content-Type": "text",
+//     });
+//     res.end(html.replace("{{%CONTENT%}}", "This is the home page"));
+//   } else if (path.toLocaleLowerCase() === "/about") {
+//     res.writeHead(200, {
+//       "Content-Type": "text",
+//     });
+//     res.end(html.replace("{{%CONTENT%}}", "This is the home about"));
+//   } else if (path.toLocaleLowerCase() === "/contact") {
+//     res.writeHead(200, {
+//       "Content-Type": "text",
+//     });
+//     res.end(html.replace("{{%CONTENT%}}", "This is the contact page"));
+//   } 
+//   else if (path.toLocaleLowerCase() === "/products") {
+//     if(!query.id){
+//       const productHtmlArray = products.map((prod) =>{
+//        return  replaceHtml(productsListHtml, prod)
+//       })
+//       const productResponse = html.replace(
+//         "{{%CONTENT%}}",
+//         productHtmlArray.join("")
+//       );
+//       res.writeHead(200, {
+//         "Content-Type": "text",
+//       });
+//       res.end(productResponse);
+//     } else{
+//       const prod = products[query.id]
+//       const productDetailsResponseHtml = replaceHtml(productDetailsHtml, prod)
+//       res.end(html.replace(
+//         "{{%CONTENT%}}",
+//         productDetailsResponseHtml))
+//     }
+   
+//   } else {
+//     //handle a non-existing route
+//     res.writeHead(404, {
+//       "Content-Type": "text",
+//     });
+//     res.end(html.replace("{{%CONTENT%}}", "Error 404: Page not found!"));
+//   }
+// })
 const http = require("http");
 const fs = require("fs");
-const html = fs.readFileSync("./template/index.html", "utf-8");
-
-const products = JSON.parse(fs.readFileSync("./data/products.json", "utf-8"));
-const productsListHtml = fs.readFileSync(
-  "./template/product-list.html",
-  "utf-8"
-);
-
-const productHtmlArray = products.map((prod) => {
-  let output = productsListHtml.replace("{{%IMAGE%}}", prod.image);
-  output = output.replace("{{%NAME%}}", prod.name);
-  output = output.replace("{{%COLOR%}}", prod.color);
-  output = output.replace("{{%PRICE%}}", prod.price);
-
-  return output;
-});
-
-const server = http.createServer((req, res) => {
-  const path = req.url;
-  if (path === "/" || path.toLocaleLowerCase() === "/home") {
-    res.writeHead(200, {
-      "Content-Type": "text",
-    });
-    res.end(html.replace("{{%CONTENT%}}", "This is the home page"));
-  } else if (path.toLocaleLowerCase() === "/about") {
-    res.writeHead(200, {
-      "Content-Type": "text",
-    });
-    res.end(html.replace("{{%CONTENT%}}", "This is the home about"));
-  } else if (path.toLocaleLowerCase() === "/contact") {
-    res.writeHead(200, {
-      "Content-Type": "text",
-    });
-    res.end(html.replace("{{%CONTENT%}}", "This is the contact page"));
-  } else if (path.toLocaleLowerCase() === "/products") {
-    const productResponse = html.replace(
-      "{{%CONTENT%}}", productHtmlArray.join("")
-    );
-    res.writeHead(200, {
-      "Content-Type": "text",
-    });
-    res.end(productResponse);
-  } else {
-    //handle a non-existing route
-    res.writeHead(404, {
-      "Content-Type": "text",
-    });
-    res.end(html.replace("{{%CONTENT%}}", "Error 404: Page not found!"));
-  }
-});
+const server = http.createServer()
 
 //Listening to server
 server.listen(8000, "127.0.0.1", () => {
   console.log("Listening to server on port 8000...");
 });
+
+// // EMITTING AND HANDLING CUSTOM EVENTS============================
+
+// // const events = require("events")
+// const user = require("./modules/user")
+// const myEmitter = new user()
+
+// myEmitter.on("userCreated", (id, name) =>{
+//   console.log(`A new user ${name} with ID:${id} was created`)
+// })
+
+// myEmitter.emit("userCreated", 12, "Paks")
+
+
+//UNDERSTANDING STREAMS IN PRACTICE==========================
+
+// server.on("request", (req, res) =>{
+//   fs.readFile("./files/large-file.txt", (err, data) =>{
+//     if(err){
+//       res.end("Something went wrong!")
+//       return
+//     }
+//     res.end(data)
+//   })
+// })
+
+
+// server.on("request", (req, res) =>{
+// let rs = fs.createReadStream("./files/large-file.txt")
+// rs.on("data", (chunk) =>{
+//   res.write(chunk)
+// })
+
+// //listening to the end method
+// rs.on("end", () =>{
+//   res.end()
+// })
+
+// //listening to the error events
+// rs.on("error", (error) =>{
+//   res.end(error.message)
+// })
+// })
+
+//USING THE PIPE() METHOD
+server.on("request", (req, res) =>{
+  let rs = fs.createReadStream("./files/large-file.txt")
+  rs.on("data", (chunk) =>{
+    res.write(chunk)
+  })
+  
+  //listening to the end method
+  rs.on("end", () =>{
+    res.end()
+  })
+  
+  //listening to the error events
+  rs.on("error", (error) =>{
+    res.end(error.message)
+  })
+  })
+
