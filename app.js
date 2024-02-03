@@ -211,18 +211,7 @@ server.listen(8000, "127.0.0.1", () => {
 //USING THE PIPE() METHOD
 server.on("request", (req, res) =>{
   let rs = fs.createReadStream("./files/large-file.txt")
-  rs.on("data", (chunk) =>{
-    res.write(chunk)
-  })
-  
-  //listening to the end method
-  rs.on("end", () =>{
-    res.end()
-  })
-  
-  //listening to the error events
-  rs.on("error", (error) =>{
-    res.end(error.message)
-  })
+    rs.pipe(res)
   })
 
+console.log("nodemon is working")
