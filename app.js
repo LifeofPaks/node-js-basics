@@ -105,7 +105,7 @@
 // });
 
 
-
+//USING EVENT EMITTERS
 // server.on("request", (req, res) =>{
 //   const url = require("url");
 //   const { query, pathname: path } = url.parse(req.url, true);
@@ -161,9 +161,9 @@ const fs = require("fs");
 const server = http.createServer()
 
 //Listening to server
-server.listen(8000, "127.0.0.1", () => {
-  console.log("Listening to server on port 8000...");
-});
+// server.listen(8000, "127.0.0.1", () => {
+//   console.log("Listening to server on port 8000...");
+// });
 
 // // EMITTING AND HANDLING CUSTOM EVENTS============================
 
@@ -209,9 +209,15 @@ server.listen(8000, "127.0.0.1", () => {
 // })
 
 //USING THE PIPE() METHOD
-server.on("request", (req, res) =>{
-  let rs = fs.createReadStream("./files/large-file.txt")
-    rs.pipe(res)
-  })
+// server.on("request", (req, res) =>{
+//   let rs = fs.createReadStream("./files/large-file.txt")
+//     rs.pipe(res)
+//   })
 
-console.log("nodemon is working")
+console.log("Program Started")
+
+setTimeout(() =>{
+  console.log("Timer callback executed!")
+})
+
+console.log("Program has completed")
